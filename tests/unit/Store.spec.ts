@@ -72,7 +72,7 @@ describe("Characters Store", () => {
     expect(characterStore.characters.length).toBe(1);
   });
 
-  it("remove character from store and update Nextid", () => {
+  it("remove character from store and updateIds", () => {
     const characterStore = useCharactersStore();
 
     const defaultCharacters = [
@@ -85,6 +85,11 @@ describe("Characters Store", () => {
     characterStore.removeCharacter(characterStore.characters[1].id);
 
     expect(characterStore.characters.length).toBe(defaultCharacters.length - 1);
+    let id = 1;
+    characterStore.characters.forEach((element) => {
+      expect(element.id).toBe(id);
+      id++;
+    });
     expect(characterStore.$state.nextId).toBe(
       characterStore.characters.length + 1
     );
