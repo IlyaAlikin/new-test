@@ -71,4 +71,22 @@ describe("Characters Store", () => {
 
     expect(characterStore.characters.length).toBe(1);
   });
+
+  it("remove character from store and update Nextid", () => {
+    const characterStore = useCharactersStore();
+
+    const defaultCharacters = [
+      { name: "Luke Skywalker", birth_year: "19BBY", starships: [] },
+      { name: "Leia Organa", birth_year: "19BBY", starships: [] },
+      { name: "Darth Vader", birth_year: "42BBY", starships: [] },
+    ];
+
+    characterStore.setCharacters(defaultCharacters);
+    characterStore.removeCharacter(characterStore.characters[1].id);
+
+    expect(characterStore.characters.length).toBe(defaultCharacters.length - 1);
+    expect(characterStore.$state.nextId).toBe(
+      characterStore.characters.length + 1
+    );
+  });
 });
