@@ -51,4 +51,24 @@ describe("Characters Store", () => {
 
     expect(characterStore.characters).toHaveLength(mockCharacters.length);
   });
+
+  it("add character to the store", () => {
+    const mockedCharacter = {
+      name: "Luke Skywalker",
+      birth_year: "19BBY",
+      starships: [],
+    };
+
+    const characterStore = useCharactersStore();
+
+    expect(characterStore.characters.length).toBe(0);
+
+    characterStore.addCharacter(mockedCharacter);
+
+    expect(
+      characterStore.characters[characterStore.characters.length - 1].id
+    ).toBe(characterStore.$state.nextId - 1);
+
+    expect(characterStore.characters.length).toBe(1);
+  });
 });
