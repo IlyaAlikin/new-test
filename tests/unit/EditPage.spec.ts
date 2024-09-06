@@ -34,7 +34,7 @@ describe("EditPage.vue", () => {
     });
   });
 
-  it("updates store after changed character", async () => {
+  it("update store after edited character", async () => {
     const charactersStore = useCharactersStore();
 
     mockRoute.params = { id: 1 };

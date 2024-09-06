@@ -1,4 +1,3 @@
-OwnSelect.vue
 <template>
   <div class="select-container">
     <div class="selected-item" @click="toggleDropdown">
